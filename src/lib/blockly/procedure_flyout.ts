@@ -1,3 +1,4 @@
+import { t } from '$lib/i18n';
 import * as Blockly from 'blockly/core';
 
 export interface ParameterDefinition {
@@ -146,7 +147,7 @@ function proceduresFlyoutCallback(workspace: Blockly.Workspace) {
 
     blockList.push({
         kind: 'button',
-        text: 'Make a Block',
+        text: t('Make a Block'),
         callbackkey: 'CREATE_SPIKE_BLOCK'
     });
 

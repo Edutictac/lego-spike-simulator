@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { t } from '$lib/i18n';
     import { onDestroy, onMount } from 'svelte';
     import { Button, Input, Modal } from 'flowbite-svelte';
     import {
@@ -635,7 +636,7 @@
 <Modal
     backdropClass="fixed inset-0 z-[80] bg-gray-900 bg-opacity-50 dark:bg-opacity-80"
     dialogClass="fixed top-0 start-0 end-0 h-modal md:inset-0 md:h-full z-[90] w-full p-4 flex"
-    title="Scene editor"
+    title={t('Scene editor')}
     size="xl"
     bind:open={modalOpen}
 >
@@ -655,16 +656,18 @@
                     {#if renameObject}
                         <div class="flex flex-row justify-around items-center h-full">
                             <div class="bg-white rounded-xl p-3 flex flex-col shadow gap-2">
-                                <h2>Rename object: {renameObject.name}</h2>
+                                <h2>{t('Rename object:')} {renameObject.name}</h2>
                                 <hr />
                                 <div class="flex flex-row w-96 gap-2 items-center">
-                                    <span class="w-28">New name: </span><Input
+                                    <span class="w-28">{t('New name:')} </span><Input
                                         bind:value={newName}
                                     />
                                 </div>
                                 <div class="flex flex-row justify-center gap-2">
-                                    <Button on:click={hideRename}>CANCEL</Button>
-                                    <Button on:click={doRenameObject} color="green">OK</Button>
+                                    <Button on:click={hideRename}>{t('CANCEL')}</Button>
+                                    <Button on:click={doRenameObject} color="green"
+                                        >{t('OK')}</Button
+                                    >
                                 </div>
                             </div>
                         </div>
@@ -673,19 +676,21 @@
                 <div class="absolute left-0 top-0 h-full w-full" hidden={!customSizeVisible}>
                     <div class="flex flex-row justify-around items-center h-full">
                         <div class="bg-white rounded-xl p-3 flex flex-col shadow gap-2">
-                            <h2>Custom Mat Size</h2>
+                            <h2>{t('Custom Mat Size')}</h2>
                             <hr />
                             <div class="flex flex-row w-96 gap-2 items-center">
-                                <span class="w-20">Width: </span><Input bind:value={customWidth} />
+                                <span class="w-20">{t('Width:')} </span><Input
+                                    bind:value={customWidth}
+                                />
                             </div>
                             <div class="flex flex-row w-96 gap-2 items-center">
-                                <span class="w-20">Height: </span><Input
+                                <span class="w-20">{t('Height:')} </span><Input
                                     bind:value={customHeight}
                                 />
                             </div>
                             <div class="flex flex-row justify-center gap-2">
-                                <Button on:click={hideCustomSize}>CANCEL</Button>
-                                <Button on:click={setCustomSize} color="green">OK</Button>
+                                <Button on:click={hideCustomSize}>{t('CANCEL')}</Button>
+                                <Button on:click={setCustomSize} color="green">{t('OK')}</Button>
                             </div>
                         </div>
                     </div>

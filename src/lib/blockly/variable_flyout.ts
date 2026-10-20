@@ -1,3 +1,4 @@
+import { t } from '$lib/i18n';
 import { variable_blocks, list_variable_blocks } from '$lib/blockly/variable_blocks';
 import * as Blockly from 'blockly/core';
 
@@ -67,7 +68,7 @@ function variablesFlyoutCallback(workspace: Blockly.Workspace) {
 
     blockList.push({
         kind: 'button',
-        text: 'Make a Variable',
+        text: t('Make a Variable'),
         callbackkey: 'CREATE_SPIKE_NUMBER_VARIABLE'
     });
 
@@ -96,7 +97,7 @@ function variablesFlyoutCallback(workspace: Blockly.Workspace) {
 
     blockList.push({
         kind: 'button',
-        text: 'Make a List',
+        text: t('Make a List'),
         callbackkey: 'CREATE_SPIKE_LIST_VARIABLE'
     });
 

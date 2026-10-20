@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { t } from '$lib/i18n';
     import { Modal, Input } from 'flowbite-svelte';
     import {
         componentStore,
@@ -158,7 +159,7 @@
 <Modal
     backdropClass="fixed inset-0 z-[80] bg-gray-900 bg-opacity-50 dark:bg-opacity-80"
     dialogClass="fixed top-0 start-0 end-0 h-modal md:inset-0 md:h-full z-[90] w-full p-4 flex"
-    title="Connect wheels"
+    title={t('Connect wheels')}
     size="xl"
     bind:open={modalOpen}
 >
@@ -175,9 +176,9 @@
             />
             <div class="flex flex-col gap-2">
                 <span class="mb-2"
-                    >Select the wheel to change, and then click on the port with the motor that
-                    drives the wheel, and enter gear ratio. A negative gear ratio will cause the
-                    wheel to turn in reverse.</span
+                    >{t(
+                        'Select the wheel to change, and then click on the port with the motor that drives the wheel, and enter gear ratio. A negative gear ratio will cause the wheel to turn in reverse.'
+                    )}</span
                 >
                 {#each wheels as wheel}
                     {#if selectedWheel == wheel.part.id}
@@ -190,7 +191,7 @@
                                 >Port: {wheel.wheel?.port ?? ''}</span
                             >
                             <div class="pl-6 flex flex-row items-center gap-2 w-full">
-                                <span class="text-sm text-black">Gear ratio:</span>
+                                <span class="text-sm text-black">{t('Gear ratio:')}</span>
                                 <Input
                                     class="flex-1 my-0 py-2"
                                     bind:value={gearing}

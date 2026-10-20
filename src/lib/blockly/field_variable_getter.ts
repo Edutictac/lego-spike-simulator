@@ -1,3 +1,4 @@
+import { t } from '$lib/i18n';
 import * as Blockly from 'blockly/core';
 // Patch blockly to get access to private members
 import '$lib/blockly/patch';
@@ -130,7 +131,7 @@ export class FieldVariableGetter extends Blockly.FieldVariable {
             options.push([`Create ${this.getDefaultType()} variable...`, ADD_NEW_VARIABLE]);
         }
         if (options.length == 2) {
-            return [['No variables available', NONE_AVAILABLE]];
+            return [[t('No variables available'), NONE_AVAILABLE]];
         }
         return options;
     }

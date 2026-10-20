@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { t } from '$lib/i18n';
     import { Button, Input, Modal } from 'flowbite-svelte';
     import {
         type ProcedureCreateCallback,
@@ -107,14 +108,14 @@
     size="md"
     backdropClass="fixed inset-0 z-[80] bg-gray-900 bg-opacity-50 dark:bg-opacity-80"
     dialogClass="fixed top-0 start-0 end-0 h-modal md:inset-0 md:h-full z-[90] w-full p-4 flex"
-    title="Make a block"
+    title={t('Make a block')}
     bind:open={modalOpen}
 >
     <div class="flex flex-col gap-2">
         <div
             class="bg-red-300 p-5 text-black flex flex-row gap-2 rounded-xl items-center flex-wrap"
         >
-            <div class="h-10 flex flex-row items-center">define</div>
+            <div class="h-10 flex flex-row items-center">{t('define')}</div>
             <div class="h-10 flex flex-row items-center">
                 {procedureName}
             </div>
@@ -164,33 +165,38 @@
                 {/if}
             {/each}
         </div>
-        <Input id="procedure_name" size="lg" placeholder="block name" bind:value={procedureName} />
+        <Input
+            id="procedure_name"
+            size="lg"
+            placeholder={t('block name')}
+            bind:value={procedureName}
+        />
         <div class="flex flex-row gap-2 justify-around items-center">
             <Button color="alternative" on:click={addInputNum}>
                 <div class="flex flex-col items-center">
-                    <div>Add an input</div>
-                    <div>(Number)</div>
+                    <div>{t('Add an input')}</div>
+                    <div>{t('(Number)')}</div>
                 </div></Button
             >
 
             <Button color="alternative" on:click={addInputBool}>
                 <div class="flex flex-col items-center">
-                    <div>Add an input</div>
-                    <div>(Boolean)</div>
+                    <div>{t('Add an input')}</div>
+                    <div>{t('(Boolean)')}</div>
                 </div></Button
             >
 
             <Button color="alternative" on:click={addLabel}>
                 <div class="flex flex-col items-center">
-                    <div>Add a label</div>
+                    <div>{t('Add a label')}</div>
                     <div>&nbsp;</div>
                 </div></Button
             >
         </div>
 
         <div class="flex flex-row gap-2 mt-5 items-center justify-center">
-            <Button on:click={cancel}>CANCEL</Button>
-            <Button on:click={createProcedure} color="green">SAVE</Button>
+            <Button on:click={cancel}>{t('CANCEL')}</Button>
+            <Button on:click={createProcedure} color="green">{t('SAVE')}</Button>
         </div>
     </div>
 </Modal>

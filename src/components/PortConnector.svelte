@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { t } from '$lib/i18n';
     import { Modal, Radio } from 'flowbite-svelte';
     import { componentStore, findParts, type PartMatch } from '$lib/ldraw/components';
     import {
@@ -92,7 +93,7 @@
 <Modal
     backdropClass="fixed inset-0 z-[80] bg-gray-900 bg-opacity-50 dark:bg-opacity-80"
     dialogClass="fixed top-0 start-0 end-0 h-modal md:inset-0 md:h-full z-[90] w-full p-4 flex"
-    title="Connect robot ports"
+    title={t('Connect robot ports')}
     size="xl"
     bind:open={modalOpen}
 >
@@ -108,14 +109,18 @@
                 on:F={() => selectPort('F')}
             />
             <div class="flex flex-col gap-2">
-                <span>Click on a port on the hub to determine the connection for the port.</span>
+                <span
+                    >{t(
+                        'Click on a port on the hub to determine the connection for the port.'
+                    )}</span
+                >
                 <span class="text-black font-bold">Port {port}:</span>
                 {#key port}
                     <Radio
                         name="attachment"
                         value="none"
                         on:change={attach}
-                        checked={isChecked(port, 'none')}>None</Radio
+                        checked={isChecked(port, 'none')}>{t('None')}</Radio
                     >
                     {#each parts as part}
                         <Radio

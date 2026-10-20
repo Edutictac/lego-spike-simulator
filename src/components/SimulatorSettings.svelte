@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { t } from '$lib/i18n';
     import { boundaryStore } from '$lib/spike/scene';
     import { Modal, Label, Range, Toggle } from 'flowbite-svelte';
     import {
@@ -59,7 +60,7 @@
 <Modal
     backdropClass="fixed inset-0 z-[80] bg-gray-900 bg-opacity-50 dark:bg-opacity-80"
     dialogClass="fixed top-0 start-0 end-0 h-modal md:inset-0 md:h-full z-[90] w-full p-4 flex"
-    title="Settings"
+    title={t('Settings')}
     bind:open={modalOpen}
 >
     <div class="flex flex-col gap-2 items-start">
@@ -94,14 +95,14 @@
         />
         <div class="h-2" />
         <Toggle size="small" on:change={() => toggleBoundary()} checked={$boundaryStore.draw}>
-            Draw boundary
+            {t('Draw boundary')}
         </Toggle>
         <Toggle
             size="small"
             on:change={() => toggleCollisions()}
             checked={$boundaryStore.collisions}
         >
-            Show boundary collisions
+            {t('Show boundary collisions')}
         </Toggle>
     </div>
 </Modal>

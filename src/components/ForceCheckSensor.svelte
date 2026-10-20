@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { t } from '$lib/i18n';
     import { onDestroy, onMount } from 'svelte';
     import { Button, Dropdown, DropdownItem } from 'flowbite-svelte';
     import { WebGL, type MapTexture } from '$lib/ldraw/gl';
@@ -286,9 +287,9 @@
         {force}N
     </Button>
     <Dropdown class="rounded-xl" bind:open={overrideOpen}>
-        <DropdownItem on:click={() => setOverride('measure')}>measure</DropdownItem>
-        <DropdownItem on:click={() => setOverride('press')}>press</DropdownItem>
-        <DropdownItem on:click={() => setOverride('hard press')}>hard press</DropdownItem>
-        <DropdownItem on:click={() => setOverride('release')}>release</DropdownItem>
+        <DropdownItem on:click={() => setOverride('measure')}>{t('measure')}</DropdownItem>
+        <DropdownItem on:click={() => setOverride('press')}>{t('press')}</DropdownItem>
+        <DropdownItem on:click={() => setOverride('hard press')}>{t('hard press')}</DropdownItem>
+        <DropdownItem on:click={() => setOverride('release')}>{t('release')}</DropdownItem>
     </Dropdown>
 </div>

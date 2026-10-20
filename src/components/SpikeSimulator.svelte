@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { t } from '$lib/i18n';
     import * as Blockly from 'blockly/core';
     import {
         type Model,
@@ -344,33 +345,37 @@
     {/key}
     {#if !compiledRobot && !runSimulation}
         <div class="m-2">
-            Use LeoCad (<a href="https://www.leocad.org/" target="_blank">https://www.leocad.org/</a
-            >) to create a model for your robot or Bricklink Studio (<a
+            {t('Use LeoCad (')}<a href="https://www.leocad.org/" target="_blank"
+                >https://www.leocad.org/</a
+            >{t(') to create a model for your robot or Bricklink Studio (')}<a
                 href="https://www.bricklink.com/v3/studio/download.page"
                 target="_blank">https://www.bricklink.com/v3/studio/download.page</a
-            >). Then upload the robot.
+            >{t('). Then upload the robot.')}
         </div>
         <div class="m-2">
             <span
-                >Load the robot by clicking the
+                >{t('Load the robot by clicking the')}
                 <img class="inline mx-2" alt="robot" width="32" height="32" src="icons/Robot.svg" />
-                icon. Then setup or load the scene to run the robot in by clicking on the
+                {t('icon. Then setup or load the scene to run the robot in by clicking on the')}
                 <img class="inline mx-2" alt="scene" width="32" height="32" src="icons/Scene.svg" />
-                icon.</span
+                {t('icon.')}</span
             >
         </div>
         <div class="m-2">
-            You may need to upload the component library (complete.zip) to load your model (<a
-                href="https://library.ldraw.org/updates?latest"
-                target="_blank">https://library.ldraw.org/updates?latest</a
-            >). Check to see if there are any missing parts to see if the library needs to be
-            loaded. The
-            <img class="inline mx-2" alt="scene" width="32" height="32" src="icons/Library.svg" /> icon
-            will bounce if additional parts are needed. Click on it to load parts.
+            {t(
+                'You may need to upload the component library (complete.zip) to load your model ('
+            )}<a href="https://library.ldraw.org/updates?latest" target="_blank"
+                >https://library.ldraw.org/updates?latest</a
+            >{t(
+                '). Check to see if there are any missing parts to see if the library needs to be loaded. The'
+            )}
+            <img class="inline mx-2" alt="scene" width="32" height="32" src="icons/Library.svg" />
+            {t('icon will bounce if additional parts are needed. Click on it to load parts.')}
         </div>
         <div class="m-2">
-            Always load the robot before the library, only missing bricks are loaded from the
-            library.
+            {t(
+                'Always load the robot before the library, only missing bricks are loaded from the library.'
+            )}
         </div>
     {/if}
 

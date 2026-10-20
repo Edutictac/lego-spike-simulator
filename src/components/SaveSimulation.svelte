@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { t } from '$lib/i18n';
     import { Button, Modal } from 'flowbite-svelte';
     import FileSaver from 'file-saver';
     import {
@@ -73,20 +74,20 @@
 <Modal
     backdropClass="fixed inset-0 z-[80] bg-gray-900 bg-opacity-50 dark:bg-opacity-80"
     dialogClass="fixed top-0 start-0 end-0 h-modal md:inset-0 md:h-full z-[90] w-full p-4 flex"
-    title="Save simulation"
+    title={t('Save simulation')}
     bind:open={modalOpen}
 >
     <div class="flex flex-col gap-2 items-center">
         <Button color="light" class="!p-2 w-96" on:click={saveRobot}>
             <div class="flex flex-row gap-2 items-center">
                 <img alt="robot" width="32" height="32" src="icons/Robot.svg" />
-                <span>Save robot (mpd with ports)</span>
+                <span>{t('Save robot (mpd with ports)')}</span>
             </div>
         </Button>
         <Button color="light" class="!p-2 w-96" on:click={saveScene}>
             <div class="flex flex-row gap-2 items-center">
                 <img alt="scene" width="32" height="32" src="icons/Scene.svg" />
-                <span>Save scene with mat (zip with mpd)</span>
+                <span>{t('Save scene with mat (zip with mpd)')}</span>
             </div>
         </Button>
     </div>

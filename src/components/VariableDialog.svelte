@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { t } from '$lib/i18n';
     import { Button, Input, Modal } from 'flowbite-svelte';
     import { type VariableCreateCallback } from '$lib/blockly/variable_flyout';
 
@@ -34,7 +35,9 @@
         modalOpen = false;
     }
 
-    $: title = type == 'list' ? 'New List' : type == 'broadcast' ? 'New Broadcast' : 'New Variable';
+    $: title = t(
+        type == 'list' ? 'New List' : type == 'broadcast' ? 'New Broadcast' : 'New Variable'
+    );
 </script>
 
 <Modal
@@ -44,6 +47,6 @@
     bind:open={modalOpen}
 >
     <Input id="variable_name" size="lg" placeholder="myVariable" bind:value={variableName} />
-    <Button on:click={cancel}>CANCEL</Button>
-    <Button on:click={createVariable} color="green">OK</Button>
+    <Button on:click={cancel}>{t('CANCEL')}</Button>
+    <Button on:click={createVariable} color="green">{t('OK')}</Button>
 </Modal>

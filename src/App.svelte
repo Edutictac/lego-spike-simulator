@@ -1,9 +1,10 @@
 <script>
+    import { t } from '$lib/i18n';
     import BlocklyPage from '$pages/BlocklyPage.svelte';
 </script>
 
 <svelte:head>
-    <title>Lego Spike Simulator</title>
+    <title>{t('Lego Spike Simulator')}</title>
     <meta name="description" content="Lego Spike Simulator" />
 </svelte:head>
 

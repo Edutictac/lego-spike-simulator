@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { t } from '$lib/i18n';
     import { Checkbox } from 'flowbite-svelte';
     import { boundaryStore } from '$lib/spike/scene';
     import { onDestroy, onMount } from 'svelte';
@@ -342,6 +343,6 @@
     </div>
     <div class="flex flex-col gap-1">
         <div>{distance}mm</div>
-        <div><Checkbox bind:checked={covered}>covered</Checkbox></div>
+        <div><Checkbox bind:checked={covered}>{t('covered')}</Checkbox></div>
     </div>
 </div>

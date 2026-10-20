@@ -2,6 +2,7 @@
     import { twMerge } from 'tailwind-merge';
     import { Checkbox, Dropdown, DropdownItem, Radio, Toggle } from 'flowbite-svelte';
     import { type MenuAction } from '$components/Menu.svelte';
+    import { t } from '$lib/i18n';
     export let actions: MenuAction[];
     export let placement: 'bottom-start' | 'right' = 'bottom-start';
     export let name: string;
@@ -21,7 +22,7 @@
                     {name}
                     value={action.name}
                     on:change={() => action.action()}
-                    checked={action.radio}>{action.name}</Radio
+                    checked={action.radio}>{t(action.name)}</Radio
                 >
             </li>
         {:else if action.checkbox !== undefined}
@@ -32,7 +33,7 @@
                 )}
             >
                 <Checkbox on:change={() => action.action()} checked={action.checkbox}
-                    >{action.name}</Checkbox
+                    >{t(action.name)}</Checkbox
                 >
             </li>
         {:else if action.toggle !== undefined}
@@ -43,7 +44,7 @@
                 )}
             >
                 <Toggle size="small" on:change={() => action.action()} checked={action.toggle}
-                    >{action.name}</Toggle
+                    >{t(action.name)}</Toggle
                 >
             </li>
         {:else}
@@ -52,7 +53,7 @@
                     {#if action.icon}
                         <svelte:component this={action.icon} />
                     {/if}
-                    {action.name}
+                    {t(action.name)}
                 </div>
             </DropdownItem>
         {/if}

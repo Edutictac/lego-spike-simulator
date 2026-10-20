@@ -8,7 +8,8 @@
     import * as Blockly from 'blockly/core';
     // Import the list of blocks so it gets loaded into blockly
     import 'blockly/blocks';
-    import * as En from 'blockly/msg/en';
+    import { t, blocklyMessages, localizeBlocks, localizeToolbox } from '$lib/i18n';
+    import LanguageSelector from '$components/LanguageSelector.svelte';
     import '$lib/blockly/render';
     import '$lib/blockly/theme';
     import '$lib/blockly/field_variable_getter';
@@ -78,12 +79,11 @@
     onMount(() => {
         fieldAngle.registerFieldAngle();
         colourPkg.registerFieldColour();
-        Blockly.common.defineBlocksWithJsonArray(procedureBlocks);
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        Blockly.setLocale(En as any as Record<string, string>);
+        Blockly.common.defineBlocksWithJsonArray(localizeBlocks(procedureBlocks));
+        Blockly.setLocale(blocklyMessages());
         registerInputShadowExtension(Blockly);
         registerProcedureCallExtension(Blockly);
-        Blockly.defineBlocksWithJsonArray(blocks);
+        Blockly.defineBlocksWithJsonArray(localizeBlocks(blocks));
         // Also apply the shadow extension to any blocks that
         // don't declare they use it.
         applyInputShadowExtension(Blockly);
@@ -108,7 +108,7 @@
                 scaleSpeed: 1.2,
                 pinch: true
             },
-            toolbox: toolbox
+            toolbox: localizeToolbox(toolbox)
         });
         variableFlyout.registerVariableFlyout(workspace, createVariableDialog);
         procedureFlyout.registerProcedureFlyout(workspace, createProcedureDialog);
@@ -410,21 +410,21 @@
                     <img alt="open" width="32" height="32" src="icons/FolderMedium.svg" />
                 </div>
             </Button>
-            <Tooltip>Open a spike program</Tooltip>
+            <Tooltip>{t('Open a spike program')}</Tooltip>
             <Button color="light" class="!p-2" on:click={askForMerge}>
                 <div class="w-8 h-8 flex flex-col justify-center items-center">
                     <img alt="merge" width="32" height="32" src="icons/FolderMerge.svg" />
                 </div>
             </Button>
-            <Tooltip>Merge in another spike program</Tooltip>
+            <Tooltip>{t('Merge in another spike program')}</Tooltip>
             <Button color="light" class="!p-2" on:click={saveState}>
                 <div class="w-8 h-8 flex flex-col justify-center items-center">
                     <img alt="save" width="32" height="32" src="icons/SaveMedium.svg" />
                 </div>
             </Button>
-            <Tooltip>Save the spike program</Tooltip>
+            <Tooltip>{t('Save the spike program')}</Tooltip>
             <Button id="print_close_button" color="light" class="hidden" on:click={closePrint}>
-                Close print
+                {t('Close print')}
             </Button>
             {#if !simulatorOpen}
                 <Button color="light" class="!p-2" on:click={togglePrintDialog}>
@@ -432,7 +432,7 @@
                         <img alt="print" width="32" height="32" src="icons/Print.svg" />
                     </div>
                 </Button>
-                <Tooltip>Print the code</Tooltip>
+                <Tooltip>{t('Print the code')}</Tooltip>
             {/if}
             {#if simulatorOpen}
                 <Button color="light" class="!p-2" on:click={toggleSize}>
@@ -440,16 +440,17 @@
                         1:{split == 1 ? 2 : 1}
                     </div>
                 </Button>
-                <Tooltip>Adjust the code panel width</Tooltip>
+                <Tooltip>{t('Adjust the code panel width')}</Tooltip>
             {/if}
             <Button color="light" class="!p-2" on:click={toggleRobot}>
                 <div class="w-8 h-8 flex flex-col justify-center items-center">
                     <img alt="simulator" width="32" height="32" src="icons/Brick.svg" />
                 </div>
             </Button>
-            <Tooltip>Open the robot simulator panel</Tooltip>
+            <Tooltip>{t('Open the robot simulator panel')}</Tooltip>
             {#if !simulatorOpen}
                 <div class="flex-1" />
+                <LanguageSelector />
                 <a href="https://developers.google.com/blockly" target="_blank">
                     <div class="w-24 h-8 flex flex-col justify-center items-center">
                         <img class="w-32" src="icons/blockly.svg" alt="blockly" />
@@ -457,7 +458,7 @@
                 </a>
             {:else}
                 <CloseButton on:click={closeWindow} />
-                <Tooltip>Close the code panel without losing code</Tooltip>
+                <Tooltip>{t('Close the code panel without losing code')}</Tooltip>
             {/if}
         </div>
         <div class="flex-1 w-full overflow-hidden">

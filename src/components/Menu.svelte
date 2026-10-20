@@ -20,13 +20,14 @@
 <script lang="ts">
     import { Button } from 'flowbite-svelte';
     import MenuDropdown from '$components/MenuDropdown.svelte';
+    import { t } from '$lib/i18n';
 
     export let menu: MenuEntry[];
 </script>
 
 <div class="flex flex-row {$$props.class}">
     {#each menu as item}
-        <Button color="blue" class="rounded-none py-1">{item.name}</Button>
+        <Button color="blue" class="rounded-none py-1">{t(item.name)}</Button>
         <MenuDropdown name={item.name} actions={item.actions} />
     {/each}
 </div>

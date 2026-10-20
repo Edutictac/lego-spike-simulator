@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { t } from '$lib/i18n';
     import * as Blockly from 'blockly/core';
     import { CogOutline } from 'flowbite-svelte-icons';
     import { Button, CloseButton, Tooltip } from 'flowbite-svelte';
@@ -216,43 +217,49 @@
                         <img alt="robot" width="32" height="32" src="icons/Robot.svg" />
                     </div>
                 </Button>
-                <Tooltip>Load a robot model for use in the simulator</Tooltip>
+                <Tooltip>{t('Load a robot model for use in the simulator')}</Tooltip>
                 <Button color="light" class="!p-2" on:click={connectPorts}>
                     <div class="w-8 h-8 flex flex-col justify-center items-center">
                         <HubIcon />
                     </div>
                 </Button>
-                <Tooltip>Connect ports on the spike hub of the robot</Tooltip>
+                <Tooltip>{t('Connect ports on the spike hub of the robot')}</Tooltip>
                 <Button color="light" class="!p-2" on:click={connectWheels}>
                     <div class="w-8 h-8 flex flex-col justify-center items-center">
                         <img alt="scene" width="32" height="32" src="icons/wheel.svg" />
                     </div>
                 </Button>
-                <Tooltip>Connect wheels to motors of the robot</Tooltip>
+                <Tooltip>{t('Connect wheels to motors of the robot')}</Tooltip>
                 <Button color="light" class="!p-2" on:click={loadScene}>
                     <div class="w-8 h-8 flex flex-col justify-center items-center">
                         <img alt="scene" width="32" height="32" src="icons/Scene.svg" />
                     </div>
                 </Button>
-                <Tooltip>Setup or load a scene based on a WRO or FLL mat</Tooltip>
+                <Tooltip>{t('Setup or load a scene based on a WRO or FLL mat')}</Tooltip>
                 <Button color="light" class={libraryClass} on:click={askForLibrary}>
                     <div class="w-8 h-8 flex flex-col justify-center items-center">
                         <img alt="scene" width="32" height="32" src="icons/Library.svg" />
                     </div>
                 </Button>
-                <Tooltip>Load any missing components from the ldraw library (complete.zip)</Tooltip>
+                <Tooltip
+                    >{t(
+                        'Load any missing components from the ldraw library (complete.zip)'
+                    )}</Tooltip
+                >
                 <Button color="light" class="!p-2" on:click={saveRobotOrScene}>
                     <div class="w-8 h-8 flex flex-col justify-center items-center">
                         <img alt="save" width="32" height="32" src="icons/SaveMedium.svg" />
                     </div>
                 </Button>
                 <Tooltip
-                    >Save the robot with ports and wheels, or the scene (without the robot)</Tooltip
+                    >{t(
+                        'Save the robot with ports and wheels, or the scene (without the robot)'
+                    )}</Tooltip
                 >
                 <Button color="light" class="!p-2" on:click={openSettings}>
                     <CogOutline class="w-8 h-8" />
                 </Button>
-                <Tooltip>Adjust simulator speed settings</Tooltip>
+                <Tooltip>{t('Adjust simulator speed settings')}</Tooltip>
                 <Button id="camera_config_button" color="light" class="!p-2">
                     <div class="w-8 h-8 flex flex-col justify-center items-center">
                         <img alt="eye" width="32" height="32" src="icons/Eye.svg" />
@@ -264,7 +271,9 @@
                     rounded={true}
                     class="bg-white rounded-2xl"
                 />
-                <Tooltip triggeredBy="#camera_config_button">Set camera for simulator</Tooltip>
+                <Tooltip triggeredBy="#camera_config_button"
+                    >{t('Set camera for simulator')}</Tooltip
+                >
                 {#if runSimulation}
                     <Button color="light" class="!p-2" on:click={stopRobot}>
                         <div class="w-8 h-8 flex flex-col justify-center items-center">
@@ -276,7 +285,7 @@
                             />
                         </div>
                     </Button>
-                    <Tooltip>Stop the simulation</Tooltip>
+                    <Tooltip>{t('Stop the simulation')}</Tooltip>
                 {:else}
                     <Button color="light" class="!p-2" on:click={startRobot}>
                         <div class="w-8 h-8 flex flex-col justify-center items-center">
@@ -288,7 +297,9 @@
                             />
                         </div>
                     </Button>
-                    <Tooltip>Start the simulation, running the code in the code panel</Tooltip>
+                    <Tooltip
+                        >{t('Start the simulation, running the code in the code panel')}</Tooltip
+                    >
                 {/if}
                 {#if !blocklyOpen}
                     <Button color="light" class="!p-2" on:click={openBlockly}>
@@ -296,12 +307,12 @@
                             <img alt="blockly" width="32" height="32" src="icons/BlocklyIcon.svg" />
                         </div>
                     </Button>
-                    <Tooltip>Open the code panel</Tooltip>
+                    <Tooltip>{t('Open the code panel')}</Tooltip>
                 {/if}
                 <div class="flex-1" />
                 {#if blocklyOpen}
                     <CloseButton on:click={closeWindow} />
-                    <Tooltip>Close the simulation window</Tooltip>
+                    <Tooltip>{t('Close the simulation window')}</Tooltip>
                 {/if}
             </div>
             {#key blocklyOpen}

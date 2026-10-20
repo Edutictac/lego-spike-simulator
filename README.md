@@ -1,3 +1,18 @@
+# EduTicTac · Simulador LEGO SPIKE
+
+Fork de [alexandrehardy/lego-spike-simulator](https://github.com/alexandrehardy/lego-spike-simulator)
+mantingut per la Comunitat EduTicTac. Afig la interfície i els blocs en
+**català, valencià i castellà** (a més de l'anglès original).
+
+- Versió publicada: <https://pages.edutictac.es/Edutictac/lego-spike-simulator/>
+- Idioma: paràmetre `?lang=ca|va|es|en`, selector a la barra superior o idioma del navegador.
+- Traduccions: `src/lib/i18n/` (claus = text original en anglès; `va.ts` només conté les diferències amb `ca.ts`).
+- Publicació: `npm run build` i copiar `dist/` a la branca `pages` (vegeu `AGENTS.md`).
+
+Llicència GPL-2.0, igual que l'original (vegeu `COPYING.md`).
+
+---
+
 Welcome to the lego-spike-simulator project. The aim is to provide
 an environment where LEGO spike robots can be simulated and the
 code tested before uploading to a real LEGO spike robot.
